@@ -170,12 +170,13 @@ public class PlayerActivity extends AppCompatActivity {
     @Override
     protected void onResume(){
         super.onResume();
+        playerBinding.playPause.setImageResource(R.drawable.pause);
         mediaPlayer.start();
     }
     @Override
     protected void onPause(){
         super.onPause();
-        mediaPlayer.stop();
+        mediaPlayer.pause();
     }
 
     @Override

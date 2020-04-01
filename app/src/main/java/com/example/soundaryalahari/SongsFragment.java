@@ -55,6 +55,8 @@ public class SongsFragment extends Fragment {
         for (int i = 1; i <= 100; i++) {
                slokams.add("soundarya_lahari_" + i);
                if (i % 10 == 0) {
+                   int s = i-9;
+                   slokams.add("soundaryalahari"+s+"_"+i);
                    songs.add(slokams);
                    slokams = new ArrayList<String>();
                }
@@ -67,6 +69,8 @@ public class SongsFragment extends Fragment {
         for(int i=1;i<=100;i++){
             slokam_titles.add("SLOKAM " + i);
             if(i%10==0){
+                int s = i-9;
+                slokam_titles.add("REVIEW SOUNDARYA LAHARI SLOKAM "+s+"-"+i);
                 titles.add(slokam_titles);
                 slokam_titles = new ArrayList<>();
             }
