@@ -25,6 +25,8 @@ public class PlayerActivity extends AppCompatActivity{
     Handler handler;
     Runnable runnable;
 
+    int i = -1;
+
     List <String> songs;
     List<String> song_titles;
     @Override
@@ -208,8 +210,9 @@ public class PlayerActivity extends AppCompatActivity{
         }
         else {
             playerBinding.playPause.setImageResource(R.drawable.play);
-            mp.start();
-            playerBinding.playPause.setImageResource(R.drawable.pause);
+            mp.pause();
+            mp.seekTo(0);
+            seekBar.setProgress(0);
         }
     }
 
