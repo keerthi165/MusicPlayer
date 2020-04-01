@@ -4,7 +4,8 @@
     android:height="108dp"
     android:viewportWidth="2234.7827"
     android:viewportHeight="2234.7827"
-    android:tint="@color/im_background">
+    android:font = "@font/lato_bold"
+    android:tint="#000000">
   <group android:translateX="603.3913"
       android:translateY="1034.5984">
     <group android:translateY="128.32031">
