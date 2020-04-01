@@ -15,7 +15,7 @@
     <TextView
         android:id="@+id/song_title"
         android:layout_marginTop="0dp"
-        android:background="@color/nav_bar_colour"
+        android:background="@color/white_background"
         android:layout_gravity="center_horizontal"
         android:fontFamily="@font/lato_bold"
         android:layout_width="match_parent"
@@ -35,7 +35,7 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_alignParentBottom="true"
-        android:background="@color/nav_bar_colour"
+        android:background="@color/white_background"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
          <SeekBar

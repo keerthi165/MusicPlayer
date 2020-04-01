@@ -7,4 +7,5 @@
     <color name="nav_bar_colour">#6edb91</color>
     <color name="im_background">#006762</color>
     <color name="white">#FFFFFF</color>
+    <color name="white_background">#f0f0ea</color>
 </resources>
