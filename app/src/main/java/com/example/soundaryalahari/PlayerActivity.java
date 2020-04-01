@@ -18,7 +18,7 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
-public class PlayerActivity extends AppCompatActivity {
+public class PlayerActivity extends AppCompatActivity{
     ActivityPlayerBinding playerBinding;
     SeekBar seekBar;
     MediaPlayer mediaPlayer;
@@ -78,6 +78,13 @@ public class PlayerActivity extends AppCompatActivity {
                    mediaPlayer.stop();
                    mediaPlayer = MediaPlayer.create(getApplicationContext(),resId);
                    mediaPlayer.start();
+                    mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                        @Override
+                        public void onCompletion(MediaPlayer mp) {
+                            onComplete(position[0],mp);
+                        }
+                    });
+                   seekBar.setMax(mediaPlayer.getDuration());
                 }
                 else{
                     playerBinding.previous.setImageResource(R.drawable.previous_disabled);
@@ -105,6 +112,13 @@ public class PlayerActivity extends AppCompatActivity {
                         mediaPlayer.stop();
                         mediaPlayer = MediaPlayer.create(getApplicationContext(),resId);
                         mediaPlayer.start();
+                    mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                        @Override
+                        public void onCompletion(MediaPlayer mp) {
+                           onComplete(position[0],mp);
+                        }
+                    });
+                        seekBar.setMax(mediaPlayer.getDuration());
                 }
                 else{
                     playerBinding.next.setImageResource(R.drawable.next_disabled);
@@ -129,10 +143,11 @@ public class PlayerActivity extends AppCompatActivity {
         mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
             public void onCompletion(MediaPlayer mp) {
-                playerBinding.playPause.setImageResource(R.drawable.play);
-                mp.stop();
+                onComplete(position[0],mp);
             }
         });
+
+
 
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
@@ -167,6 +182,7 @@ public class PlayerActivity extends AppCompatActivity {
             handler.postDelayed(runnable,1000);
         }
     }
+
     @Override
     protected void onResume(){
         super.onResume();
@@ -184,6 +200,17 @@ public class PlayerActivity extends AppCompatActivity {
         super.onDestroy();
         mediaPlayer.release();
         handler.removeCallbacks(runnable);
+    }
+
+    public void onComplete(int position,MediaPlayer mp){
+        if(position!=songs.size()-1){
+            playerBinding.next.performClick();
+        }
+        else {
+            playerBinding.playPause.setImageResource(R.drawable.play);
+            mp.start();
+            playerBinding.playPause.setImageResource(R.drawable.pause);
+        }
     }
 
 }
